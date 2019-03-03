@@ -8,12 +8,19 @@
     <header th:replace="fragments/header :: menu"></header>
 
     <ul>
-        <th:block th:each="trainer : ${trainerList}">
-            <li th:text="${trainer.firstName} + ' ' + ${trainer.lastName}">
-            </li>
-        </th:block>
-        <!--<li th:each="trainer : ${trainerList}" th:text="${trainer.firstName}"></li>-->
+        <!--<th:block th:each="trainer : ${trainerList}">-->
+            <!--<li th:text="${trainer.firstName} + ' ' + ${trainer.lastName}"-->
+                <!--th:hred="">-->
+            <!--</li>-->
+        <!--</th:block>-->
+        <li th:each="trainer : ${trainerList}">
+
+            <a th:href="'/trenerzy/' +${trainer.id}" th:text="${trainer.firstName} + ' ' + ${trainer.lastName}"></a>
+        </li>
     </ul>
+
+
+    <footer th:replace="fragments/footer :: stopka"></footer>
 
 </body>
 </html>
