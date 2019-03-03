@@ -1,21 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Bootcamp</title>
 </head>
 <body>
+    <header th:replace="fragments/header :: menu"></header>
 
-<nav>
-    <ul>
-        <li><a href="/">Strona glowna</a> </li>
-        <li><a href="/o-nas">Wroc do strony glownej</a></li>
-
-    </ul>
-</nav>
-
-
-
-<h1>Witaj na bootcampie</h1>
+    <th:block th:text="${lastName}"></th:block><br><br>
+    <h1><span th:text="${firstName}"></span> Witaj na bootcampie</h1>
 </body>
 </html>
