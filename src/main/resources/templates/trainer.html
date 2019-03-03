@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootcamp</title>
+</head>
+<body>
+    <header th:replace="fragments/header :: menu"></header>
+
+    <ul>
+        <th:block th:each="trainer : ${trainerList}">
+            <li th:text="${trainer.firstName} + ' ' + ${trainer.lastName}">
+            </li>
+        </th:block>
+        <!--<li th:each="trainer : ${trainerList}" th:text="${trainer.firstName}"></li>-->
+    </ul>
+
+</body>
+</html>
