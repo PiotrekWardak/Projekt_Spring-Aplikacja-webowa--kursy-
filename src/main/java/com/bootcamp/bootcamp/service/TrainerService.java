@@ -16,7 +16,7 @@ public class TrainerService {
 
 
     public List<Trainer> getAllTrainers() {
-        List<Trainer> trainerList = trainerRepository.findAll();
+        List<Trainer> trainerList = trainerRepository.findAllByOrderByLastName();
 
         return trainerList;
     }
@@ -31,6 +31,20 @@ public class TrainerService {
         return trainerRepository.getOne(id);
     }
     //getOne zwraca TRainer a nie Optional tak jak findById
+
+    public void deleteTrainer(long id){
+
+        trainerRepository.deleteById(id);
+    }
+    public void addToDB(Trainer trainer){
+
+        trainerRepository.save(trainer);
+    }
+
+    public void updateDB(Trainer trainer){
+trainerRepository.save(trainer);
+       // trainerRepository.edytuj(trainer.getId(),trainer.getFirstName(),trainer.getLastName(),trainer.getSalary(),trainer.getDescription());
+    }
 
 
 

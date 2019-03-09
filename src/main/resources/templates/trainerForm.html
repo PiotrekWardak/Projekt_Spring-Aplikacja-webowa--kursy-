@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>TrainerForm</title>
+</head>
+<body>
+<header th:replace="fragments/header :: menu"></header>
+
+
+
+<h1>Dodawanie trenera</h1>
+
+<form th:action="@{/admin/dodano}" method="post" th:object="${trainer}" >
+    <label for="firstName">Imie</label>
+    <input id="firstName" type="text" th:field="*{firstName}  "/></br></br>
+
+    <label for="lastname">Nazwisko</label>
+    <input id="lastname" type="text" th:field="*{lastName}"/></br></br>
+
+    <label for="salary">Pensja</label>
+    <input id="salary" type="text" th:field="*{salary}"/></br></br>
+
+    <label for="message">Opis</label>
+    <!--polecenia w emet zatwierdzamy tabulatorem-->
+    <textarea name="message" id="message" cols="30" rows="10" th:field="*{description}">
+
+    </textarea></br></br>
+    <!--<input id="message" cols="30" rows="10" th:field="*{description}"/></br></br>-->
+
+    <input id="id" type="hidden" th:field="*{id}">
+
+    <input type="submit" name="edytuj" value="edytuj"  th:if="${toEdit}" />
+    <input type="submit" name="dodaj" value="dodaj"  th:if="${toAdd}" />
+    <input type="reset" value="resetuj" />
+
+</form>
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+
+</body>
+</html>

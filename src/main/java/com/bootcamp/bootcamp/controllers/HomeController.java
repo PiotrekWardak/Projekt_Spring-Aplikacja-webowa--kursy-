@@ -14,6 +14,7 @@ public class HomeController {
                           @RequestParam(defaultValue = "40") int wiek,
                           Model model) {
 
+        model.addAttribute("wiek",wiek);
         model.addAttribute("dddd", firstName);
         model.addAttribute("lastName", lastName);
         return "home";

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+
+
+<table id="tabelaTrenerzy" border="solid">
+    <tr>
+        <td><a th:href="'/admin/dodaj/'" th:text="dodaj"></a></td>
+    </tr>
+    <tr>
+        <th th:background="green"> Imie </th>
+        <th> Nazwisko </th>
+        <th> Stawka </th>
+        <th> Opcje</th>
+    </tr>
+    <tr th:each="trainer : ${trainerList}">
+        <td  th:text="${trainer.firstName}"></td>
+        <td  th:text="${trainer.lastName}"></td>
+        <td  th:text="${trainer.salary}"></td>
+        <td >
+
+            <a th:href="'/admin/edytuj/' +${trainer.id}" >edytuj</a> </br>
+            <a th:href="'/admin/usun/' +${trainer.id}" th:text="usun"></a> </br>
+            <a th:href="'/admin/detale/' +${trainer.id}" th:text="detale"></a>
+
+
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>

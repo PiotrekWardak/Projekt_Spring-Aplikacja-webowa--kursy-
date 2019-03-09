@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Bootcamp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <header th:replace="fragments/header :: menu"></header>
 
     <th:block th:text="${lastName}"></th:block><br><br>
-    <h1><span th:text="${dddd}"></span> Witaj na bootcampie</h1>
+    <h1><span th:text="${dddd}"></span> Witaj na bootcampie<span th:text="${wiek}"></span></h1 >
 
 
 
