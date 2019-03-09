@@ -25,3 +25,9 @@ body{
 .error{
     color: red;
 }
+
+.filedError{
+
+    border-style: solid;
+    border-color: red;
+}

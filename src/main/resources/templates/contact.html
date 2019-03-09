@@ -18,11 +18,11 @@
     <p th:errors="*{firstName}"></p>
 
     <label for="firstName">Imie</label>
-    <input id="firstName" type="text" th:field="*{firstName}"/></br></br>
+    <input id="firstName" type="text" th:field="*{firstName}" placeholder="Podaj Imie"/></br></br>
 
     <p th:errors="*{lastName}" class ="error" ></p>
     <label for="lastname">Nazwisko</label>
-    <input id="lastname" type="text" th:field="*{lastName}" placeholder="Podaj imie"/></br></br>
+    <input id="lastname" type="text" th:field="*{lastName}" placeholder="Podaj Nazwisko"/></br></br>
 
     <label for="email">E-mail</label>
     <input id="email" type="email" th:field="*{email}"/></br></br>

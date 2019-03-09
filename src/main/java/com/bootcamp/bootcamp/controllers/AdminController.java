@@ -6,8 +6,12 @@ import com.bootcamp.bootcamp.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -47,12 +51,20 @@ public class AdminController {
 
 
     @RequestMapping(value="/dodano",params="dodaj",method=RequestMethod.POST)
-    public String addTrainer(@ModelAttribute Trainer trainer, Model model)
+    public String addTrainer(@Valid @ModelAttribute Trainer trainer, BindingResult result, Model model)
     {
+        if (result.hasErrors()) {
+            List<ObjectError> errors = result.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            model.addAttribute("trainer", trainer);
+            return "trainerForm";
+        }
 
-        trainerService.addToDB(trainer);
+            trainerService.addToDB(trainer);
+            return "redirect:/admin/trenerzy";
 
-        return "redirect:/admin/trenerzy";
+
+
     }
 
     @GetMapping("/edytuj/{identyfikator}")
@@ -70,8 +82,13 @@ public class AdminController {
     }
 
     @RequestMapping(value="/dodano",params="edytuj",method=RequestMethod.POST)
-    public String updateTrainer(@ModelAttribute Trainer trainer, Model model)
+    public String updateTrainer(@Valid @ModelAttribute Trainer trainer, BindingResult result, Model model)
     {
+        if (result.hasErrors()) {
+            List<ObjectError> errors = result.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            return "trainerForm";
+        }
         trainerService.updateDB(trainer);
         return "redirect:/admin/trenerzy";
 

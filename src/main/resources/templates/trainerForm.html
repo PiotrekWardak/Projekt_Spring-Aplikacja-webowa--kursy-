@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TrainerForm</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="fragments/header :: menu"></header>
@@ -12,19 +13,28 @@
 <h1>Dodawanie trenera</h1>
 
 <form th:action="@{/admin/dodano}" method="post" th:object="${trainer}" >
+
+    <p th:errors="*" class ="error" ></p>
+
+    <p th:errors="*{firstName}" class ="error" ></p>
     <label for="firstName">Imie</label>
-    <input id="firstName" type="text" th:field="*{firstName}  "/></br></br>
+    <input th:class="${#fields.hasErrors()}? filedError" id="firstName" type="text" th:field="*{firstName}  "/></br></br>
 
+    <p th:errors="*{lastName}" class ="error" ></p>
     <label for="lastname">Nazwisko</label>
-    <input id="lastname" type="text" th:field="*{lastName}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? filedError" id="lastname" type="text" th:field="*{lastName}"/></br></br>
 
+    <p th:errors="*{salary}" class ="error" ></p>
     <label for="salary">Pensja</label>
-    <input id="salary" type="text" th:field="*{salary}"/></br></br>
 
+    <input th:class="${#fields.hasErrors()}? filedError" id="salary" type="text" th:field="*{salary}"/></br></br>
+    <!--<input th:classappend="${#fields.hasErrors()}? class="jakasKlasa" filedError" id="salary" type="text" th:field="*{salary}"/></br></br>-->
+
+    <p th:errors="*{description}" class ="error" ></p>
     <label for="message">Opis</label>
     <!--polecenia w emet zatwierdzamy tabulatorem-->
-    <textarea name="message" id="message" cols="30" rows="10" th:field="*{description}"></textarea></br></br>
-    
+    <textarea th:class="${#fields.hasErrors()}? filedError" name="message" id="message" cols="30" rows="10" th:field="*{description}"></textarea></br></br>
+
     <input id="id" type="hidden" th:field="*{id}">
 
     <input type="submit" name="edytuj" value="edytuj"  th:if="${trainer.id} > 0" />

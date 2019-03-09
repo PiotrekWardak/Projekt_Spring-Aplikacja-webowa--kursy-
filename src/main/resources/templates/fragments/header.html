@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
     <nav th:fragment="menu">
@@ -9,6 +10,16 @@
             <li><a href="/kursy">Kursy</a></li>
             <li><a href="/admin/trenerzy">Trenerzy</a></li>
             <li><a href="/kontakt">Kontakt</a></li>
+            <li sec:authorize="isAuthenticated()">
+                <a>Wyloguj</a>
+            </li>
+            <!--<li sec:authentication="name" ><a href="/">Wyloguj</a></li>-->
+            <!--<li th:block="${#authentication.name}" ><a href="/">Wyloguj mnie</a></li>-->
+
+        </ul>
+        <ul sec:authorize="isAuthenticated()">
+            <li><a href="/admin/">Admin Trenerzy</a></li>
+            <li><a href="/logout/">Wyloguj</a></li>
         </ul>
     </nav>
 </body>
