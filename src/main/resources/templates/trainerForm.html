@@ -23,15 +23,12 @@
 
     <label for="message">Opis</label>
     <!--polecenia w emet zatwierdzamy tabulatorem-->
-    <textarea name="message" id="message" cols="30" rows="10" th:field="*{description}">
-
-    </textarea></br></br>
-    <!--<input id="message" cols="30" rows="10" th:field="*{description}"/></br></br>-->
-
+    <textarea name="message" id="message" cols="30" rows="10" th:field="*{description}"></textarea></br></br>
+    
     <input id="id" type="hidden" th:field="*{id}">
 
-    <input type="submit" name="edytuj" value="edytuj"  th:if="${toEdit}" />
-    <input type="submit" name="dodaj" value="dodaj"  th:if="${toAdd}" />
+    <input type="submit" name="edytuj" value="edytuj"  th:if="${trainer.id} > 0" />
+    <input type="submit" name="dodaj" value="dodaj"  th:unless="${trainer.id} > 0" />
     <input type="reset" value="resetuj" />
 
 </form>

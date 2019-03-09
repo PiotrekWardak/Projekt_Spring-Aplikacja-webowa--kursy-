@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Bootcamp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="fragments/header :: menu"></header>
@@ -10,11 +11,18 @@
 <h1>Formularz kontaktowy</h1>
 <span th:if="${isSent}">Wiadomosc została wysłana, dziękujemy!</span>
 <form th:action="@{/wyslij}" method="post" th:object="${contact}">
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+
+    <p th:if="${#fields.hasErrors('firstName')}">Podaj imię!</p>
+
+    <p th:errors="*{firstName}"></p>
+
     <label for="firstName">Imie</label>
     <input id="firstName" type="text" th:field="*{firstName}"/></br></br>
 
+    <p th:errors="*{lastName}" class ="error" ></p>
     <label for="lastname">Nazwisko</label>
-    <input id="lastname" type="text" th:field="*{lastName}"/></br></br>
+    <input id="lastname" type="text" th:field="*{lastName}" placeholder="Podaj imie"/></br></br>
 
     <label for="email">E-mail</label>
     <input id="email" type="email" th:field="*{email}"/></br></br>
@@ -23,7 +31,7 @@
     <input id="message" cols="30" rows="10" th:field="*{message}"/></br></br>
 
     <input type="submit" value="wyslij" />
-    <input type="reset" value="wyslij" />
+    <input type="reset" value="resetuj" />
 
 </form>
 

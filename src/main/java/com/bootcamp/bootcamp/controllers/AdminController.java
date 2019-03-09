@@ -41,7 +41,7 @@ public class AdminController {
     @GetMapping("/dodaj")
     public String contact(Model model) {
         model.addAttribute("trainer", new Trainer());
-        model.addAttribute("toAdd", true);
+        //model.addAttribute("toAdd", true);
         return "trainerForm";
     }
 
@@ -62,7 +62,7 @@ public class AdminController {
         Optional<Trainer> trainer = trainerService.getOneTrainer(id);
         if(trainer.isPresent()) {
             model.addAttribute("trainer", trainer.get());
-            model.addAttribute("toEdit", true);
+            //model.addAttribute("toEdit", true);
             return "trainerForm";
         }else{
             return "redirect:";
