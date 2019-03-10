@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>EditionForm</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: menu"></header>
+
+
+
+<h1>Dodawanie Edycji Kursu</h1>
+
+<form th:action="@{/admin/edycje/dodano}" method="post" th:object="${courseEdition}" >
+
+    <p th:errors="*" class ="error" ></p>
+
+    <label for="course">Kurs</label>
+    <select th:field ="*{course}" id="course">
+        <option th:each="element : ${courses}" th:value="${element.id}" th:text="${element.name}" ></option>
+    </select>
+    </br>
+    </br>
+    <label for="mode">Tryb</label>
+    <select th:field ="*{mode}" id="mode">
+        <option th:each="element : ${mode}" th:value="${element.id}" th:text="${element.nazwa}" ></option>
+    </select>
+    </br>
+    </br>
+
+
+    <p th:errors="*{startDate}" class ="error" ></p>
+    <label for="dataStartu">Data Startu</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="dataStartu" type="date" th:field="*{startDate}"/></br></br>
+
+    <p th:errors="*{endDate}" class ="error" ></p>
+    <label for="dataKonca">Data Konca</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="dataKonca" type="date" th:field="*{endDate}"/></br></br>
+
+
+    <p th:errors="*{price}" class ="error" ></p>
+    <label for="cena">Cena</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="cena" type="text" th:field="*{price}"/></br></br>
+
+    <p th:errors="*{membersLimit}" class ="error" ></p>
+    <label for="liczbaUczestnikow">Liczba uczestnikow</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="liczbaUczestnikow" type="text" th:field="*{membersLimit}"/></br></br>
+
+    <input id="id" type="hidden" th:field="*{id}">
+
+    <input type="submit" name="edytuj" value="edytuj"  th:if="${courseEdition.id} > 0" />
+    <input type="submit" name="dodaj" value="dodaj"  th:unless="${courseEdition.id} > 0" />
+    <input type="reset" value="resetuj" />
+
+</form>
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+
+</body>
+</html>

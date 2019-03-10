@@ -3,19 +3,19 @@ body{
 }
 
 
-#tabelaTrenerzy {
+#tabelaFormat {
     border-collapse: collapse;
     border: 1px solid #824100;
 }
-#tabelaTrenerzy tr:nth-child(odd){
+#tabelaFormat tr:nth-child(odd){
     background: #9DCECE;
 }
-#tabelaTrenerzy th{
+#tabelaFormat th{
     border: 1px dotted #FFA346;
     color: #3E5260;
     padding:12px;
 }
-#tabelaTrenerzy td{
+#tabelaFormat td{
     border: 1px dashed #000;
     color: #002F5E;
     padding:12px;

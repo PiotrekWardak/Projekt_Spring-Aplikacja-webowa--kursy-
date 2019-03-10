@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseDetails</title>
+</head>
+<body>
+<header th:replace="fragments/header :: menu"></header>
+
+Strona o trenerze: <span th:text="${opis.description}"></span>
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+</body>
+</html>

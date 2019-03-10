@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header th:replace="fragments/header :: menu"></header>
+
+<table id="tabelaFormat" border="solid">
+    <tr>
+        <td><a th:href="'/admin/kursy/dodaj/'" th:text="dodaj"></a></td>
+    </tr>
+    <tr>
+        <th> Nazwa </th>
+        <th> Opis </th>
+        <th> Technologie</th>
+        <th> Opcje</th>
+    </tr>
+    <tr th:each="course : ${courseList}">
+        <td  th:text="${course.name}"></td>
+        <td  th:text="${course.description}"></td>
+        <td  th:text="${course.technology}"></td>
+        <td >
+
+            <a th:href="'/admin/kursy/edytuj/' +${course.id}" >edytuj</a> </br>
+            <a th:href="'/admin/kursy/detale/' +${course.id}" th:text="detale"></a>
+
+
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>

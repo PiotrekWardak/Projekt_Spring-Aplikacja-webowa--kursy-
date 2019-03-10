@@ -2,14 +2,14 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>CourseAdmin</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
+<header th:replace="fragments/header :: menu"></header>
 
-
-<table id="tabelaTrenerzy" border="solid">
+<table id="tabelaFormat" border="solid">
     <tr>
         <td><a th:href="'/admin/dodaj/'" th:text="dodaj"></a></td>
     </tr>

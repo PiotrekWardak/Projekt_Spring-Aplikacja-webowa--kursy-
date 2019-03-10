@@ -8,19 +8,23 @@
             <li><a href="/">Strona główna</a></li>
             <li><a href="/o-nas">O Nas</a></li>
             <li><a href="/kursy">Kursy</a></li>
-            <li><a href="/admin/trenerzy">Trenerzy</a></li>
+            <li><a href="/trenerzy">Trenerzy</a></li>
             <li><a href="/kontakt">Kontakt</a></li>
-            <li sec:authorize="isAuthenticated()">
-                <a>Wyloguj</a>
-            </li>
+            <!--<li sec:authorize="isAuthenticated()">-->
+                <!--<a>Wyloguj</a>-->
+            <!--</li>-->
             <!--<li sec:authentication="name" ><a href="/">Wyloguj</a></li>-->
             <!--<li th:block="${#authentication.name}" ><a href="/">Wyloguj mnie</a></li>-->
 
         </ul>
         <ul sec:authorize="isAuthenticated()">
-            <li><a href="/admin/">Admin Trenerzy</a></li>
-            <li><a href="/logout/">Wyloguj</a></li>
+            <li><a href="/admin/trenerzy">Admin Trenerzy</a></li>
+            <li><a href="/admin/kursy">Admin Kursy</a></li>
+            <li><a href="/admin/edycje">Admin Edycje Kursow</a></li>
+            <li><a href="/logout">Wyloguj</a></li>
         </ul>
     </nav>
+
+
 </body>
 </html>

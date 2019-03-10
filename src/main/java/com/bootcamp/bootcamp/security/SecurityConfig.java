@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/admin/*","admin")
+                .antMatchers("/admin","/admin/**")
                 .authenticated()
                 .and()
                 .logout().logoutUrl("/logout")

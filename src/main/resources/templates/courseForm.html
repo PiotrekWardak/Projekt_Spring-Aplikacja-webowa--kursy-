@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseForm</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: menu"></header>
+
+
+
+<h1>Dodawanie Kursu</h1>
+
+<form th:action="@{/admin/kursy/dodano}" method="post" th:object="${course}" >
+
+    <p th:errors="*" class ="error" ></p>
+
+    <p th:errors="*{name}" class ="error" ></p>
+    <label for="nazwa">Nazwa</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="nazwa" type="text" th:field="*{name}  "/></br></br>
+
+    <!--<p th:errors="*{description}" class ="error" ></p>-->
+    <!--<label for="opis">Opis</label>-->
+    <!--<input th:class="${#fields.hasErrors()}? filedError" id="opis" type="text" th:field="*{description}"/></br></br>-->
+
+    <p th:errors="*{technology}" class ="error" ></p>
+    <label for="technologie">Technologie</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="technologie" type="text" th:field="*{technology}"/></br></br>
+    <!--<input th:classappend="${#fields.hasErrors()}? class="jakasKlasa" filedError" id="salary" type="text" th:field="*{salary}"/></br></br>-->
+
+    <p th:errors="*{description}" class ="error" ></p>
+    <label for="opis">Opis</label>
+    <!--polecenia w emet zatwierdzamy tabulatorem-->
+    <textarea th:class="${#fields.hasErrors()}? filedError" name="message" id="opis" cols="30" rows="10" th:field="*{description}"></textarea></br></br>
+
+    <input id="id" type="hidden" th:field="*{id}">
+
+    <input type="submit" name="edytuj" value="edytuj"  th:if="${course.id} > 0" />
+    <input type="submit" name="dodaj" value="dodaj"  th:unless="${course.id} > 0" />
+    <input type="reset" value="resetuj" />
+
+</form>
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+
+</body>
+</html>
