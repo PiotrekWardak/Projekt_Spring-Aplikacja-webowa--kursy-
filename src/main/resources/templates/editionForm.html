@@ -47,6 +47,13 @@
     <label for="liczbaUczestnikow">Liczba uczestnikow</label>
     <input th:class="${#fields.hasErrors()}? filedError" id="liczbaUczestnikow" type="text" th:field="*{membersLimit}"/></br></br>
 
+    </br>
+    <label for="mentor">Tryb</label>
+    <select th:field ="*{trainer}" id="mentor">
+        <option th:each="element : ${trainer}" th:value="${element.id}" th:text="${element.firstName}+' '+${element.lastName}" ></option>
+    </select>
+    </br>
+
     <input id="id" type="hidden" th:field="*{id}">
 
     <input type="submit" name="edytuj" value="edytuj"  th:if="${courseEdition.id} > 0" />

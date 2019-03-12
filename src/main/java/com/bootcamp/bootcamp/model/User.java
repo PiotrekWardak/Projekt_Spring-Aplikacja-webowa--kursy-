@@ -7,32 +7,32 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Contact {
+@NoArgsConstructor
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Proszę podać swoje imię")
-    private String firstName;
+    @NotEmpty
+    private String name;
 
-    @NotEmpty(message = "{com.bootcamp.bootcamp.model.Contact.lastName.NotEmpty}")
-    private String lastName;
+    @NotEmpty
+    private String surname;
+
+    @NotEmpty
+    @Pattern(regexp="(^$|[0-9]{9})")
+    private String phoneNumber;
 
     @NotEmpty
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotEmpty
-    private String message;
-
-    private LocalDateTime date;
 
 }

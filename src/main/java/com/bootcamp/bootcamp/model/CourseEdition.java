@@ -44,6 +44,11 @@ public class CourseEdition {
     @NotNull
     private Mode mode;
 
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    @NotNull
+    private Trainer trainer;
+
     private boolean active;
 
 

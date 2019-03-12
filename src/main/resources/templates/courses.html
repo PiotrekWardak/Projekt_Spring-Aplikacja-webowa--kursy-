@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Bootcamp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="fragments/header :: menu"></header>
+<table id="tabelaFormat" border="solid">
+    <tr>
+        <th> Nazwa </th>
+        <th> Data od </th>
+        <th> Data do</th>
+        <th> Cena</th>
+        <th> Ilosc miejsc</th>
+        <th> Tryb</th>
+        <th> Opis</th>
+        <th> Mentor</th>
+        <th> Status</th>
+        <th> Opcje</th>
+    </tr>
+    <tr th:each="edition : ${editionList}">
+        <td  th:text="${edition.course.name}"></td>
+        <td  th:text="${edition.startDate}"></td>
+        <td  th:text="${edition.endDate}"></td>
+        <td  th:text="${edition.price}"></td>
+        <td  th:text="${edition.membersLimit}"></td>
+        <td  th:text="${edition.mode.nazwa}"></td>
+        <td  th:text="${edition.course.description}"></td>
+        <td  >
+            <a th:href="'/trenerzy/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
+        </td>
+        <td  th:text="${edition.active}?'rekrutacja trwa':'rekrutacja zakonczona'"></td>
+        <td >
+            <a th:href="${edition.active}?'/zapisz/' +${edition.id}" th:text="${edition.active}?'Zapisz'"></a> </br>
+        </td>
 
+
+    </tr>
+</table>
 
 <footer th:replace="fragments/footer :: stopka"></footer>
 

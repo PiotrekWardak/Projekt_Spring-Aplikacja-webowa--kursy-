@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -19,7 +18,7 @@ public class Mode {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
+    @Column(unique = true)
     private String nazwa;
 
     @OneToMany

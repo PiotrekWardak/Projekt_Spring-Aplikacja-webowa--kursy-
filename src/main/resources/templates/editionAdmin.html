@@ -20,6 +20,7 @@
         <th> Cena</th>
         <th> Ilosc miejsc</th>
         <th> Tryb</th>
+        <th> Mentor</th>
         <th> Opcje</th>
     </tr>
     <tr th:each="edition : ${editionList}">
@@ -29,8 +30,15 @@
         <td  th:text="${edition.price}"></td>
         <td  th:text="${edition.membersLimit}"></td>
         <td  th:text="${edition.mode.nazwa}"></td>
+        <td>
+            <a th:href="'/admin/edytuj/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
+        </td>
         <td >
+
             <a th:href="'/admin/edycje/edytuj/' +${edition.id}" >edytuj</a> </br>
+
+
+
         </td>
 
     </tr>

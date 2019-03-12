@@ -4,6 +4,8 @@ body{
 
 
 #tabelaFormat {
+    margin-left:auto;
+    margin-right:auto;
     border-collapse: collapse;
     border: 1px solid #824100;
 }

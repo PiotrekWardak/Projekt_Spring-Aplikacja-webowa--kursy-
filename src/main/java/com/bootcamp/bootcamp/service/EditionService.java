@@ -21,6 +21,10 @@ public class EditionService {
         return editionRepository.findAllByOrderByPrice();
     }
 
+    public List<CourseEdition> getAllCoursesByStartDate() {
+        return editionRepository.findAllByOrderByStartDate();
+    }
+
 
     public Optional<CourseEdition> getOneCourse(long id) {
 
@@ -40,6 +44,8 @@ public class EditionService {
         courseEdition.setActive(true);
         editionRepository.save(courseEdition);
     }
+
+
 
     public void updateDB(CourseEdition courseEdition) {
         editionRepository.save(courseEdition);

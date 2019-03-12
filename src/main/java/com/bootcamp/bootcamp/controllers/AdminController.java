@@ -194,8 +194,8 @@ public class AdminController {
         }
         courseService.updateDB(course);
         return "redirect:/admin/kursy";
-
     }
+
 //////////////////////////////////////////////////////////////
 
     @GetMapping("/edycje")
@@ -212,6 +212,7 @@ public class AdminController {
         model.addAttribute("courseEdition", courseEdition);
         model.addAttribute("courses", courseService.getAllCourses());
         model.addAttribute("mode", modeService.getAllModes());
+        model.addAttribute("trainer", trainerService.getAllTrainers());
         return "editionForm";
     }
     @RequestMapping(value="/edycje/dodano",params="dodaj",method=RequestMethod.POST)
@@ -223,6 +224,8 @@ public class AdminController {
             model.addAttribute("courses", courseService.getAllCourses());
             model.addAttribute("mode", modeService.getAllModes());
             model.addAttribute("courseEdition", courseEdition);
+            model.addAttribute("trainer", trainerService.getAllTrainers());
+
             return "editionForm";
         }
 
@@ -239,6 +242,7 @@ public class AdminController {
             model.addAttribute("courseEdition", courseEdition.get());
             model.addAttribute("courses", courseService.getAllCourses());
             model.addAttribute("mode", modeService.getAllModes());
+            model.addAttribute("trainer", trainerService.getAllTrainers());
             //model.addAttribute("toEdit", true);
             return "editionForm";
         }else{
@@ -255,6 +259,7 @@ public class AdminController {
             model.addAttribute("courseEdition", courseEdition);
             model.addAttribute("courses", courseService.getAllCourses());
             model.addAttribute("mode", modeService.getAllModes());
+            model.addAttribute("trainer", trainerService.getAllTrainers());
             return "editionForm";
         }
         editionService.updateDB(courseEdition);

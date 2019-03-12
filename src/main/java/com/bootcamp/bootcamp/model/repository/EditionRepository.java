@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EditionRepository extends JpaRepository<CourseEdition,Long> {
     List<CourseEdition> findAllByOrderByPrice();
+    List<CourseEdition> findAllByOrderByStartDate();
 }
