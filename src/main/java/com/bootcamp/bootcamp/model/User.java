@@ -19,20 +19,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
+    @NotEmpty(message = "Podaj Imie")
     private String name;
 
-    @NotEmpty
+    @NotEmpty(message = "Podaj Nazwisko")
     private String surname;
 
-    @NotEmpty
+    @NotEmpty(message = "Podaj numer tel")
     @Pattern(regexp="(^$|[0-9]{9})")
     private String phoneNumber;
 
-    @NotEmpty
+    @NotEmpty(message = "Podaj email")
     @Email
     @Column(unique = true)
     private String email;
 
+//    @OneToMany
+//    private CourseEdition editions;
 
 }

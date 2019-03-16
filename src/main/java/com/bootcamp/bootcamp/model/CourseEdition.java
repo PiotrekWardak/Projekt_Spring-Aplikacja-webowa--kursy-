@@ -51,6 +51,9 @@ public class CourseEdition {
 
     private boolean active;
 
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User userList;
 
 
 

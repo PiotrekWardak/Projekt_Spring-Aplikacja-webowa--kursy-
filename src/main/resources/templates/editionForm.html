@@ -40,21 +40,29 @@
 
 
     <p th:errors="*{price}" class ="error" ></p>
-    <label for="cena">Cena</label>
+    <label for="cena">Ceeeena</label>
     <input th:class="${#fields.hasErrors()}? filedError" id="cena" type="text" th:field="*{price}"/></br></br>
 
     <p th:errors="*{membersLimit}" class ="error" ></p>
     <label for="liczbaUczestnikow">Liczba uczestnikow</label>
     <input th:class="${#fields.hasErrors()}? filedError" id="liczbaUczestnikow" type="text" th:field="*{membersLimit}"/></br></br>
 
-    </br>
-    <label for="mentor">Tryb</label>
+    <label for="mentor">Mentor</label>
     <select th:field ="*{trainer}" id="mentor">
         <option th:each="element : ${trainer}" th:value="${element.id}" th:text="${element.firstName}+' '+${element.lastName}" ></option>
     </select>
     </br>
 
     <input id="id" type="hidden" th:field="*{id}">
+
+    <!--<input type="radio" id="activeYes" name="contact" th:value="*{setActive(true)}" th:if="${courseEdition.id} > 0" >-->
+    <!--<label for="activeYes" th:if="${courseEdition.id} > 0">Rekrutacja aktywna</label>-->
+
+    <!--<input type="radio" id="activeNo" name="contact" th:value="*{setActive(false)}" th:if="${courseEdition.id} > 0">-->
+    <!--<label for="activeNo" th:if="${courseEdition.id} > 0">Rekrutacja zakończona</label>-->
+
+    <input type="radio" th:value="true" th:field="*{active}">aktywny</input>
+    <input type="radio" th:value="false" th:field="*{active}">nieaktywny</input>
 
     <input type="submit" name="edytuj" value="edytuj"  th:if="${courseEdition.id} > 0" />
     <input type="submit" name="dodaj" value="dodaj"  th:unless="${courseEdition.id} > 0" />

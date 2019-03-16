@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>TrainerForm</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: menu"></header>
+
+
+
+<h1>Dodawanie Kursanta</h1>
+
+<form th:action="@{/user/dodano}" method="post" th:object="${uzytkownik}" >
+
+    <p th:errors="*{name}" class ="error" ></p>
+    <label for="imie">Imie</label>
+    <input th:class="${#fields.hasErrors()}? filedError" id="imie" type="text" th:field="*{name}"/></br></br>
+
+    <label for="lastname">Nazwisko</label>
+    <input id="lastname" type="text" th:field="*{surname}" placeholder="Podaj Nazwisko"/></br></br>
+
+    <label for="email">E-mail</label>
+    <input id="email" type="email" th:field="*{email}"/></br></br>
+
+    <label for="phone">Telefon</label>
+    <input id="phone" type="text" th:field="*{phoneNumber}"/></br></br>
+
+    <input id="id" type="hidden" th:field="*{id}">
+
+
+    <input type="submit" name="dodaj" value="dodaj" >
+
+
+
+</form>
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+
+</body>
+</html>

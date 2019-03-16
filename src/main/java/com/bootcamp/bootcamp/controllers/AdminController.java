@@ -4,10 +4,7 @@ package com.bootcamp.bootcamp.controllers;
 import com.bootcamp.bootcamp.model.Course;
 import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.Trainer;
-import com.bootcamp.bootcamp.service.CourseService;
-import com.bootcamp.bootcamp.service.EditionService;
-import com.bootcamp.bootcamp.service.ModeService;
-import com.bootcamp.bootcamp.service.TrainerService;
+import com.bootcamp.bootcamp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +32,8 @@ public class AdminController {
     @Autowired
     private ModeService modeService;
 
+    @Autowired
+    private UserService userService;
 
     @GetMapping("")
     public String menuAdmin(Model model) {
@@ -65,7 +64,6 @@ public class AdminController {
     @GetMapping("/dodaj")
     public String contact(Model model) {
         model.addAttribute("trainer", new Trainer());
-        //model.addAttribute("toAdd", true);
         return "trainerForm";
     }
 

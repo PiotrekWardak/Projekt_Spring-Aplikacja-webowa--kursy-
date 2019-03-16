@@ -16,7 +16,6 @@ public class EditionService {
     @Autowired
     private EditionRepository editionRepository;
 
-
     public List<CourseEdition> getAllCourses() {
         return editionRepository.findAllByOrderByPrice();
     }
@@ -24,7 +23,6 @@ public class EditionService {
     public List<CourseEdition> getAllCoursesByStartDate() {
         return editionRepository.findAllByOrderByStartDate();
     }
-
 
     public Optional<CourseEdition> getOneCourse(long id) {
 
@@ -36,7 +34,6 @@ public class EditionService {
     }
 
     public void deleteEdition(long id) {
-
         editionRepository.deleteById(id);
     }
 
@@ -45,9 +42,8 @@ public class EditionService {
         editionRepository.save(courseEdition);
     }
 
-
-
     public void updateDB(CourseEdition courseEdition) {
+
         editionRepository.save(courseEdition);
     }
 
