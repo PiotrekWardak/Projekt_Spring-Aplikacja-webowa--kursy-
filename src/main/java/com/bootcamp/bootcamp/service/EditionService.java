@@ -28,6 +28,10 @@ public class EditionService {
 
         return editionRepository.findById(id);
     }
+    public CourseEdition checkCourse(long id) {
+
+        return editionRepository.getEdition(id);
+    }
 
     public CourseEdition getEdition(long id) {
         return editionRepository.getOne(id);

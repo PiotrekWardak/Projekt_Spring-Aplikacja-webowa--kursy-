@@ -11,21 +11,34 @@
 
 
 <h1>Dodawanie Kursanta</h1>
+<h2 th:unless="${edition}"> Rekrutacja zakonczona</h2>
+<!--<h1>Zapisujesz sie na kurs <p th:text="${edition.course.name}"></p></h1>-->
 
-<form th:action="@{/user/dodano}" method="post" th:object="${uzytkownik}" >
+<form th:action="@{'/user/dodano/'+${edition.id}}" method="post" th:object="${uzytkownik}" th:if="${edition}" >
 
-    <p th:errors="*{name}" class ="error" ></p>
+
+    <p th:errors="*" class ="error" ></p>
+
+    <label for="nazwaKursu">Wybrany kurs</label>
+    <input id="nazwaKursu" th:value="${edition.course.name}" readonly/></br></br>
+
     <label for="imie">Imie</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="imie" type="text" th:field="*{name}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="imie" type="text" th:field="*{name}"/></br></br>
 
     <label for="lastname">Nazwisko</label>
-    <input id="lastname" type="text" th:field="*{surname}" placeholder="Podaj Nazwisko"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="lastname" type="text" th:field="*{surname}" placeholder="Podaj Nazwisko"/></br></br>
 
     <label for="email">E-mail</label>
-    <input id="email" type="email" th:field="*{email}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="email" type="email" th:field="*{email}"/></br></br>
 
     <label for="phone">Telefon</label>
-    <input id="phone" type="text" th:field="*{phoneNumber}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="phone" type="text" th:field="*{phoneNumber}"/></br></br>
+
+    <label for="password">Hasło</label>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="password" type="text" th:field="*{password}"/></br></br>
+
+    <label for="id_kursu">Edycja kursu</label>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="id_kursu" th:value="${edition.id}" th:name="editions"/></br></br>
 
     <input id="id" type="hidden" th:field="*{id}">
 

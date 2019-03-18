@@ -10,6 +10,9 @@
             <li><a href="/kursy">Edycje Kursów</a></li>
             <li><a href="/trenerzy">Trenerzy</a></li>
             <li><a href="/kontakt">Kontakt</a></li>
+            <li   sec:authorize="!isAuthenticated()|| hasAuthority('user')"><a href="/user">Panel Kursanta</a> </li>
+            <li   sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a> </li>
+            <!--<li><a href="/user/panel">Panel Kursanta</a></li>-->
             <!--<li sec:authorize="isAuthenticated()">-->
                 <!--<a>Wyloguj</a>-->
             <!--</li>-->
@@ -17,7 +20,7 @@
             <!--<li th:block="${#authentication.name}" ><a href="/">Wyloguj mnie</a></li>-->
 
         </ul>
-        <ul sec:authorize="isAuthenticated()">
+        <ul sec:authorize="hasAuthority('admin')">
             <li><a href="/admin/trenerzy">Admin Trenerzy</a></li>
             <li><a href="/admin/kursy">Admin Kursy</a></li>
             <li><a href="/admin/edycje">Admin Edycje Kursow</a></li>

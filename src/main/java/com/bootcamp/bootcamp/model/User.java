@@ -34,7 +34,15 @@ public class User {
     @Column(unique = true)
     private String email;
 
-//    @OneToMany
-//    private CourseEdition editions;
+    @NotEmpty
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "editions_id")
+    private CourseEdition editions;
 
 }

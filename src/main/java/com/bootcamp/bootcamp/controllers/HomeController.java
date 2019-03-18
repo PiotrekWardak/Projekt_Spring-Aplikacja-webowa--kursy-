@@ -19,4 +19,18 @@ public class HomeController {
         model.addAttribute("lastName", lastName);
         return "home";
     }
+
+
+    @GetMapping("/logowanie")
+    public String loginForm(){
+
+        return "login_form";
+    }
+
+//    @GetMapping("/logout")
+//    public String logoutForm(){
+//
+//        return "/home";
+//    }
+
 }

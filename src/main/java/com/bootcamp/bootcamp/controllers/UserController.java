@@ -1,8 +1,9 @@
 package com.bootcamp.bootcamp.controllers;
 
-import com.bootcamp.bootcamp.model.Course;
+import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.User;
 import com.bootcamp.bootcamp.service.CourseService;
+import com.bootcamp.bootcamp.service.EditionService;
 import com.bootcamp.bootcamp.service.TrainerService;
 import com.bootcamp.bootcamp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -29,43 +29,59 @@ public class UserController {
     @Autowired
     TrainerService trainerService;
 
+    @Autowired
+    EditionService editionService;
 
-    @GetMapping("/zapisz/{identyfikatorKursu}")
-    public String addUserToCourse(@PathVariable(name = "identyfikatorKursu") int id, Model model) {
-        Optional<Course> oneCourse = courseService.getOneCourse(id);
-        if (oneCourse.isPresent())
-        {
-            model.addAttribute("uzytkownik", new User());
-            return "enrolForm";
-        }
-        else
-        {
-            return "redirect:";
-        }
+
+    @GetMapping("")
+    public String goToHomePage()
+    {
+        return "/home";
     }
 
 
-    @RequestMapping(value="/dodano",params="dodaj",method= RequestMethod.POST)
-    private String saveUserToCourse(@Valid @ModelAttribute User user, BindingResult result, Model model){
 
+    @GetMapping("/zapisz/{identyfikatorKursu}")
+    public String addUserToCourse(@PathVariable(name = "identyfikatorKursu") long id, Model model) {
+        CourseEdition edition = editionService.checkCourse(id);
+
+//        if (edition!= null)
+//        {
+            model.addAttribute("uzytkownik", new User());
+            model.addAttribute("edition", edition);
+            return "enrolForm";
+//        }
+//        else
+//        {
+//            System.out.println("TUTAJ");
+//            return "redirect:/kursy";
+//        }
+    }
+
+
+    @RequestMapping(value="/dodano/{id}",params="dodaj",method= RequestMethod.POST)
+    private String saveUserToCourse(@Valid @ModelAttribute(name = "uzytkownik") User user, BindingResult result, @PathVariable(name = "id") long id,
+                                    Model model){
+        CourseEdition edition = editionService.checkCourse(id);
         if(result.hasErrors())
         {
-            List<ObjectError> errors = result.getAllErrors();
-            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
-            model.addAttribute("uzytkownik", user);
-            return "enrolForm";
+
+                List<ObjectError> errors = result.getAllErrors();
+                errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+                model.addAttribute("uzytkownik", user);
+                model.addAttribute("edition", edition);
+                return "enrolForm";
+
         }
         userService.addToDB(user);
         return "redirect:/kursy";
 
     }
 
-
-
-
-
-
-
+    @GetMapping("/panel")
+    public String userPanel( Model model) {
+     return "userPanel";
+    }
 
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Bootcamp</title>
@@ -30,7 +30,9 @@
         <td  th:text="${edition.mode.nazwa}"></td>
         <td  th:text="${edition.course.description}"></td>
         <td  >
-            <a th:href="'/trenerzy/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
+            <a sec:authorize="isAuthenticated()" th:href="'/admin/edytuj/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
+            <a sec:authorize="isAnonymous()" th:href="'/trenerzy/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
+
         </td>
         <td  th:text="${edition.active}?'rekrutacja trwa':'rekrutacja zakonczona'"></td>
         <td >
