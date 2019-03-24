@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>EditionForm</title>
@@ -12,7 +13,7 @@
 
 <h1>Dodawanie Edycji Kursu</h1>
 
-<form th:action="@{/admin/edycje/dodano}" method="post" th:object="${courseEdition}" >
+<form  th:action="@{/admin/edycje/dodano}" method="post" th:object="${courseEdition}" >
 
     <p th:errors="*" class ="error" ></p>
 

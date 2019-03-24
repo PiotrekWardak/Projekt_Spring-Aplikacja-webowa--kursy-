@@ -1,30 +1,18 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Bootcamp</title>
+    <title>Twoje Kursy</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
-<script>
-    function myFunction(link) {
-        var answer = window.confirm("Czy chcesz zapisać się na wybrany kurs?");
-        if (answer) {
-
-            location.replace("/user/dodano/"+link);
-
-        }
-        else{
-            window.alert("Zrezygnowałeś z zapisu.");
-        }
-
-    }
-
-</script>
 <header th:replace="fragments/header :: menu"></header>
+<p>Twoje Kursy</p>
+<h1>Zapis na kurs</h1>
 
-<p th:if="${present}">Obecnie jestes juz zapisany na wybrany kurs</p>
-<p th:if="${isSavedNew}">Zostales zapisany na wybrany kurs. Powodzenia!</p>
+
 <table id="tabelaFormat" border="solid">
     <tr>
         <th> Nazwa </th>
@@ -35,8 +23,7 @@
         <th> Tryb</th>
         <th> Opis</th>
         <th> Mentor</th>
-        <th> Status</th>
-        <th> Opcje</th>
+
     </tr>
 
     <tr th:each="edition : ${editionList}">
@@ -51,17 +38,12 @@
             <a sec:authorize="hasAuthority('admin')" th:href="'/admin/edytuj/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
             <a sec:authorize="isAnonymous() || hasAuthority('user') || hasAuthority('trainer')" th:href="'/trenerzy/' +${edition.trainer.id}" th:text="${edition.trainer.firstName}+' '+${edition.trainer.lastName}"></a>
         </td>
-        <td  th:text="${edition.active}?'rekrutacja trwa':'rekrutacja zakonczona'"></td>
-        <td >
-            <a sec:authorize="isAnonymous() || hasAuthority('admin')" th:href="${edition.active}?'/kursy/zapisz/' +${edition.id}" th:text="${edition.active}?'Zapisz'"></a> </br>
-            <!--<a th:href="${edition.active}?'/kursy/zapisz/' +${edition.id}" th:text="${edition.active}?'Zapisz'"></a> </br>-->
-            <a sec:authorize="hasAuthority('user')" th:onclick="'javascript:myFunction(' +${edition.id}+')'" th:text="${edition.active}?'Zapisz'"></a> </br>
-
-        </td>
     </tr>
 </table>
 
-<footer th:replace="fragments/footer :: stopka"></footer>
 
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
 </body>
 </html>

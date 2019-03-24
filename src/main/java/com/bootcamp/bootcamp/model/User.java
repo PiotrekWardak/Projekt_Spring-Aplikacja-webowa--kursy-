@@ -19,30 +19,31 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Podaj Imie")
+    @NotEmpty(message = "<-- Podaj Imie")
     private String name;
 
-    @NotEmpty(message = "Podaj Nazwisko")
+    @NotEmpty(message = "<-- Podaj Nazwisko")
     private String surname;
 
-    @NotEmpty(message = "Podaj numer tel")
+    @NotEmpty(message = "<-- Podaj numer tel")
     @Pattern(regexp="(^$|[0-9]{9})")
     private String phoneNumber;
 
-    @NotEmpty(message = "Podaj email")
+    @NotEmpty(message = "<-- Podaj email")
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "<-- Podaj Haslo")
     private String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToOne
-    @JoinColumn(name = "editions_id")
-    private CourseEdition editions;
+//    @ManyToOne
+//    @JoinColumn(name = "editions_id")
+//    private CourseEdition editions;
+    /// tego juz nie używam ponieważ zadanie domowe 16.03 mowi o wykasowaniu tej relacji a w zamian mowa jest o stworzeniu oddzielnej tabeli z numerem studenta i z numerem edycji
 
 }

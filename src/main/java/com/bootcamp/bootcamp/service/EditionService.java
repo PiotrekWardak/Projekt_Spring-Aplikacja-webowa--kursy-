@@ -4,13 +4,11 @@ import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.repository.EditionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequestMapping
 public class EditionService {
 
     @Autowired
@@ -21,6 +19,7 @@ public class EditionService {
     }
 
     public List<CourseEdition> getAllCoursesByStartDate() {
+
         return editionRepository.findAllByOrderByStartDate();
     }
 
@@ -29,6 +28,7 @@ public class EditionService {
         return editionRepository.findById(id);
     }
     public CourseEdition checkCourse(long id) {
+
 
         return editionRepository.getEdition(id);
     }

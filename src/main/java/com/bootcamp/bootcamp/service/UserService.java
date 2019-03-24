@@ -35,6 +35,11 @@ public class UserService {
         return userRepository.getOne(id);
     }
 
+    public User getLoggedUser(String email){
+
+        return userRepository.selectedUser(email);
+    }
+
     public void deleteUser(long id) {
 
         userRepository.deleteById(id);
@@ -45,7 +50,10 @@ public class UserService {
         user.setRole(roleService.getRole("user"));
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+
+
+            userRepository.save(user);
+
     }
 
     public void updateDB(User user) {
