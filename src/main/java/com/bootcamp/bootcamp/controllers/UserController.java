@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +55,7 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User loggedUser = userService.getLoggedUser(auth.getName());
         List<EnrolmentDetails> allStudentEnrolments = enrolmentDetailsService.getAllStudentEnrolments(loggedUser.getId());
-        LinkedList<CourseEdition> editionlist = new LinkedList<>();
+//        LinkedList<CourseEdition> editionlist = new LinkedList<>();
 
         List<CourseEdition> editionList = allStudentEnrolments.stream().map(x -> editionService.getEdition(x.getCourseEdition().getId())).collect(Collectors.toList());
         model.addAttribute("editionList",editionList);

@@ -4,6 +4,7 @@ package com.bootcamp.bootcamp.controllers;
 import com.bootcamp.bootcamp.model.Course;
 import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.Trainer;
+import com.bootcamp.bootcamp.model.User;
 import com.bootcamp.bootcamp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -263,6 +264,24 @@ public class AdminController {
         editionService.updateDB(courseEdition);
         return "redirect:/admin/edycje";
 
+    }
+
+    @GetMapping("/panel")
+    public String adminPanel()
+    {
+        return "/adminPanel/AdminPanel";
+    }
+    @GetMapping("/panel/UserAdd")
+    public String adminPanelUserAdd(Model model)
+    {
+        model.addAttribute("user",new User());
+        return "setUpAnUserAccount";
+    }
+    @GetMapping("/panel/TrainerAdd")
+    public String adminPanelTrainerAdd(Model model)
+    {
+        model.addAttribute("trainer",new Trainer());
+        return "trainerForm";
     }
 
 

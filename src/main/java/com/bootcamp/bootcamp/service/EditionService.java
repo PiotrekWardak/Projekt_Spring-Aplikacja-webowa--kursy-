@@ -17,6 +17,9 @@ public class EditionService {
     public List<CourseEdition> getAllCourses() {
         return editionRepository.findAllByOrderByPrice();
     }
+    public List<CourseEdition> getAllTrainerCourses(Long id) {
+        return editionRepository.findAllByTrainer_Id(id);
+    }
 
     public List<CourseEdition> getAllCoursesByStartDate() {
 

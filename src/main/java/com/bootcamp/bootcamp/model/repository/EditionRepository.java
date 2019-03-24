@@ -12,6 +12,7 @@ import java.util.List;
 public interface EditionRepository extends JpaRepository<CourseEdition,Long> {
     List<CourseEdition> findAllByOrderByPrice();
     List<CourseEdition> findAllByOrderByStartDate();
+    List<CourseEdition> findAllByTrainer_Id(Long id);
 
     @Query("select t from CourseEdition t where t.id=:id and t.active=1")
     CourseEdition getEdition(@Param("id") Long id);

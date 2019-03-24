@@ -25,8 +25,8 @@ public class User {
     @NotEmpty(message = "<-- Podaj Nazwisko")
     private String surname;
 
-    @NotEmpty(message = "<-- Podaj numer tel")
-    @Pattern(regexp="(^$|[0-9]{9})")
+
+    @Pattern(regexp="(^$|[0-9]{9})", message = "<-- Numer powinien sie skladac z 9 cyfr")
     private String phoneNumber;
 
     @NotEmpty(message = "<-- Podaj email")

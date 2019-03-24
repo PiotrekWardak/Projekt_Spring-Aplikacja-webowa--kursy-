@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kursy ktore prowadzisz</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+<header th:replace="fragments/header :: menu"></header>
+<p th:if="${editionList}">Twoje Kursy</p>
+
+
+<p th:unless="${editionList}">Nie masz kursów przypisanych do siebie</p>
+<table th:if="${editionList}" id="tabelaFormat" border="solid">
+    <tr>
+        <th> Nazwa </th>
+        <th> Data od </th>
+        <th> Data do</th>
+        <th> Cena</th>
+        <th> Ilosc miejsc</th>
+        <th> Tryb</th>
+        <th> Opis</th>
+
+    </tr>
+
+    <tr th:each="edition : ${editionList}">
+        <td  th:text="${edition.course.name}"></td>
+        <td  th:text="${edition.startDate}"></td>
+        <td  th:text="${edition.endDate}"></td>
+        <td  th:text="${edition.price}"></td>
+        <td  th:text="${edition.membersLimit}"></td>
+        <td  th:text="${edition.mode.nazwa}"></td>
+        <td  th:text="${edition.course.description}"></td>
+
+    </tr>
+</table>
+
+
+
+
+<footer th:replace="fragments/footer :: stopka"></footer>
+</body>
+</html>

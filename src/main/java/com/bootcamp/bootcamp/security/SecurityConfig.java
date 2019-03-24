@@ -26,14 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT email, password,1 FROM user WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
                 .authoritiesByUsernameQuery("Select u.email, r.role FROM user u inner join role r "+
                 "on r.id=u.role_id WHERE u.email=?")
-//                .usersByUsernameQuery("SELECT email, password,1 FROM trainer WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
-//                .authoritiesByUsernameQuery("Select t.email, t.role FROM trainer t inner join role r on r.id=t.role_id WHERE t.email=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
 
     }
-//               .usersByUsernameQuery("SELECT email, password,1 FROM trainer WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
-//                .authoritiesByUsernameQuery("Select t.email, t.role FROM trainer t inner join role r on r.id=t.role_id WHERE t.email=?")
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -65,3 +62,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .passwordParameter("password")//jakbysmy dali w formularzu inne nazwy niz domyslne to tutaj wpisujemy te zmienione nazwy pol
     }
 }
+
+

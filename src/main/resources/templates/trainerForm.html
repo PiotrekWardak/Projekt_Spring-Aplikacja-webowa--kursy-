@@ -40,7 +40,7 @@
     <span th:errors="*{email}" class ="error" ></span>
 
     <label for="password">Hasło</label>
-    <input th:class="${#fields.hasErrors('password')}? 'filedError'" id="password" type="text" th:field="*{password}" placeholder="Podaj Haslo"/>
+    <input th:unless="${trainer.id} < 0" th:class="${#fields.hasErrors('password')}? 'filedError'" id="password" type="text" th:field="*{password}" placeholder="Podaj Haslo"/>
     <span th:errors="*{password}" class ="error" ></span></br></br>
 
     <input id="id" type="hidden" th:field="*{id}">

@@ -47,7 +47,8 @@ public String getHome(
         System.out.println("Weszło do potwierdzenia");
 
         User loggedUser = userService.getLoggedUser(auth.getName());
-        System.out.println(auth.getPrincipal());
+        Object principal = auth.getPrincipal();
+        System.out.println(principal);
         System.out.println(auth.getName());
 
     }
@@ -74,22 +75,26 @@ public String getHome(
     @PostMapping("/added")
     public String addNewUserToDB(@Valid @ModelAttribute User user, BindingResult result, Model model){
 
-        if(result.hasErrors())
-        {
+    try {
+        if (result.hasErrors()) {
             List<ObjectError> allErrors = result.getAllErrors();
-            allErrors.stream().forEach(error -> System.out.println(error.getDefaultMessage()) );
+            allErrors.stream().forEach(error -> System.out.println(error.getDefaultMessage()));
             return "setUpAnUserAccount";
-        }
-        else if(user.getEmail().equals(userService.getLoggedUser(user.getEmail()).getEmail())){
+        } else if (user.getEmail().equals(userService.getLoggedUser(user.getEmail()).getEmail())) {
             System.out.println("Taki user juz istnieje");
-            model.addAttribute("exist",true);
+            model.addAttribute("exist", true);
             model.addAttribute("user", user);
 
             return "setUpAnUserAccount";
         }
+    }
+    catch (NullPointerException e) {
 
-        else{userService.addToDB(user);
-        return "redirect:/";}
+            userService.addToDB(user);
+            return "redirect:/";
+
+    }
+        return "redirect:/";
     }
 
 
