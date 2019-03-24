@@ -21,15 +21,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-        //adminow, oraz userow zapisujemy w jednej bazie, roznia sie jedynie polem ROLA. w zwiazku z tym gdy uzytkownik poda login i haslo to nastepuje porownanie wartosci wprowadzonych z tymi w bazie
+        //adminow, oraz userow zapisujemy w jednej bazie, roznia sie jedynie polem ROLA. w zwiazku z tym gdy uzytkownik poda login i haslo to nastepuje porownanie wartosci wprowadzonych z tymi w abr
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("SELECT email, password,1 FROM user WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
                 .authoritiesByUsernameQuery("Select u.email, r.role FROM user u inner join role r "+
                 "on r.id=u.role_id WHERE u.email=?")
+//                .usersByUsernameQuery("SELECT email, password,1 FROM trainer WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
+//                .authoritiesByUsernameQuery("Select t.email, t.role FROM trainer t inner join role r on r.id=t.role_id WHERE t.email=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
 
-    };
+    }
+//               .usersByUsernameQuery("SELECT email, password,1 FROM trainer WHERE email=?") //tam gdzie 1 to mozna sprawdzac kolumne active. 1 albo cos musi byc bo metoda wymaga 3 parametrow
+//                .authoritiesByUsernameQuery("Select t.email, t.role FROM trainer t inner join role r on r.id=t.role_id WHERE t.email=?")
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -47,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin","/admin/**").hasAuthority("admin")//.authenticated()
                 .antMatchers("/user","/user/**").hasAuthority("user")//.authenticated()
-                .antMatchers("/trainer","/trainer/**").hasAuthority("user")//.authenticated()
+                .antMatchers("/trainer","/trainer/**").hasAuthority("trainer")//.authenticated()
                 .and()
                 .logout()
                 //    .logoutUrl("/logout")

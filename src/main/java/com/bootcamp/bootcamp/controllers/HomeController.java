@@ -47,6 +47,8 @@ public String getHome(
         System.out.println("Weszło do potwierdzenia");
 
         User loggedUser = userService.getLoggedUser(auth.getName());
+        System.out.println(auth.getPrincipal());
+        System.out.println(auth.getName());
 
     }
 

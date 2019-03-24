@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -34,6 +35,18 @@ public class Trainer {
 
     @OneToMany
     private List<CourseEdition> editions;
+
+    @NotEmpty(message = "<-- Podaj email")
+    @Email
+    @Column(unique = true)
+    private String email;
+
+    @NotEmpty(message = "<-- Podaj Haslo")
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @Override
     public String toString() {

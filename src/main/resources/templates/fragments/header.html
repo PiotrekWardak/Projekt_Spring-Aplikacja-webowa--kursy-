@@ -13,37 +13,60 @@
             <li   sec:authorize="!isAuthenticated()"><a href="/logowanie">Logowanie</a></li>
             <li   sec:authorize="!isAuthenticated()"><a href="/add">Załóż konto użytkownika</a> </li>
             <li   sec:authorize=" hasAuthority('user')"><a href="/user/panel">Panel Kursanta</a> </li>
-            <li   sec:authorize="hasAuthority('trainer')"><a href="/trainer/panel">Panel Kursanta</a> </li>
-            <li   sec:authorize="hasAuthority('admin')"><a href="/admin/panel">Panel Kursanta</a> </li>
-
-
-
-
+            <li   sec:authorize="hasAuthority('trainer')"><a href="/trainer/panel">Panel Trenera</a> </li>
+            <li   sec:authorize="hasAuthority('admin')"><a href="/admin/panel">Panel Admina</a> </li>
             <li   sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a> </li>
-            <!--<li><a href="/user/panel">Panel Kursanta</a></li>-->
-            <!--<li sec:authorize="isAuthenticated()">-->
-                <!--<a>Wyloguj</a>-->
-            <!--</li>-->
-            <!--<li sec:authentication="name" ><a href="/">Wyloguj</a></li>-->
-            <!--<li th:block="${#authentication.name}" ><a href="/">Wyloguj mnie</a></li>-->
 
         </ul>
-    </nav>
-        <nav th:fragment="menuAdmin">
         <ul sec:authorize="hasAuthority('admin')">
-            <li><a href="/">Strona główna</a></li>
-            <li><a href="/o-nas">O Nas</a></li>
-            <li><a href="/kursy">Edycje Kursów</a></li>
-            <li><a href="/trenerzy">Trenerzy</a></li>
-            <li><a href="/kontakt">Kontakt</a></li>
-            <li><a href="/add">Utwórz konto użytkownika lub trenera</a> </li>
-            <li><a href="/admin/trenerzy">Zmiany tabeli Trenerzy</a></li>
-            <li><a href="/admin/kursy">Zmiany tabeli Kursy</a></li>
-            <li><a href="/admin/edycje">Zmiany tabeli Edycje Kursow</a></li>
-            <li ><a href="/logout">Wyloguj</a> </li>
+            <li><a href="/admin/trenerzy">Admin Trenerzy</a></li>
+            <li><a href="/admin/kursy">Admin Kursy</a></li>
+            <li><a href="/admin/edycje">Admin Edycje Kursow</a></li>
         </ul>
     </nav>
 
 
 </body>
 </html>
+
+
+<!--<nav th:fragment="menu">-->
+    <!--<ul>-->
+        <!--<li><a href="/">Strona główna</a></li>-->
+        <!--<li><a href="/o-nas">O Nas</a></li>-->
+        <!--<li><a href="/kursy">Edycje Kursów</a></li>-->
+        <!--<li><a href="/trenerzy">Trenerzy</a></li>-->
+        <!--<li><a href="/kontakt">Kontakt</a></li>-->
+        <!--<li   sec:authorize="!isAuthenticated()"><a href="/logowanie">Logowanie</a></li>-->
+        <!--<li   sec:authorize="!isAuthenticated()"><a href="/add">Załóż konto użytkownika</a> </li>-->
+        <!--<li   sec:authorize=" hasAuthority('user')"><a href="/user/panel">Panel Kursanta</a> </li>-->
+        <!--<li   sec:authorize="hasAuthority('trainer')"><a href="/trainer/panel">Panel Kursanta</a> </li>-->
+        <!--<li   sec:authorize="hasAuthority('admin')"><a href="/admin/panel">Panel Kursanta</a> </li>-->
+
+
+
+
+        <!--<li   sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a> </li>-->
+        <!--&lt;!&ndash;<li><a href="/user/panel">Panel Kursanta</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li sec:authorize="isAuthenticated()">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a>Wyloguj</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li sec:authentication="name" ><a href="/">Wyloguj</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li th:block="${#authentication.name}" ><a href="/">Wyloguj mnie</a></li>&ndash;&gt;-->
+
+    <!--</ul>-->
+<!--</nav>-->
+<!--<nav th:fragment="menuAdmin">-->
+    <!--<ul sec:authorize="hasAuthority('admin')">-->
+        <!--<li><a href="/">Strona główna</a></li>-->
+        <!--<li><a href="/o-nas">O Nas</a></li>-->
+        <!--<li><a href="/kursy">Edycje Kursów</a></li>-->
+        <!--<li><a href="/trenerzy">Trenerzy</a></li>-->
+        <!--<li><a href="/kontakt">Kontakt</a></li>-->
+        <!--<li><a href="/add">Utwórz konto użytkownika lub trenera</a> </li>-->
+        <!--<li><a href="/admin/trenerzy">Zmiany tabeli Trenerzy</a></li>-->
+        <!--<li><a href="/admin/kursy">Zmiany tabeli Kursy</a></li>-->
+        <!--<li><a href="/admin/edycje">Zmiany tabeli Edycje Kursow</a></li>-->
+        <!--<li ><a href="/logout">Wyloguj</a> </li>-->
+    <!--</ul>-->
+<!--</nav>-->
