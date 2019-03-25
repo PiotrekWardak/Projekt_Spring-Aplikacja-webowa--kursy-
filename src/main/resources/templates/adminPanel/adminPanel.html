@@ -9,11 +9,13 @@
 <body>
 <header th:replace="fragments/header :: menu"></header>
 
-
-<a th:href="@{/admin/panel/UserAdd}">Dodaj Użytkownika</a>
-<a th:href="@{/admin/panel/TrainerAdd}">Dodaj Trenera</a>
-
-
+<ul>
+    <li><a th:href="@{/admin/panel/UserAdd}">Dodaj Użytkownika</a></li>
+    <li><a th:href="@{/admin/panel/TrainerAdd}">Dodaj Trenera</a></li>
+    <li><a href="/admin/trenerzy">Zarządzanie listą trenerów</a></li>
+    <li><a href="/admin/kursy">Zarządzanie dostępnymi kursami</a></li>
+    <li><a href="/admin/edycje">Zarządzanie edycjami kursów</a></li>
+</ul>
 
 
 

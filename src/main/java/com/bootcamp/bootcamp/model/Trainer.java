@@ -36,12 +36,12 @@ public class Trainer {
     @OneToMany
     private List<CourseEdition> editions;
 
-    @NotEmpty(message = "<-- Podaj email")
+    @NotEmpty(message = "Podaj email")
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotEmpty(message = "<-- Podaj Haslo")
+    @NotEmpty(message = "Podaj Haslo")
     private String password;
 
     @ManyToOne

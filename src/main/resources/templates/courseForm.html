@@ -14,25 +14,27 @@
 
 <form th:action="@{/admin/kursy/dodano}" method="post" th:object="${course}" >
 
-    <p th:errors="*" class ="error" ></p>
 
-    <p th:errors="*{name}" class ="error" ></p>
+
+
     <label for="nazwa">Nazwa</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="nazwa" type="text" th:field="*{name}  "/></br></br>
+    <input th:class="${#fields.hasErrors('name')}? 'filedError'" id="nazwa" type="text" th:field="*{name}  "/>
+    <span th:errors="*{name}" class ="error" ></span><br><br>
 
     <!--<p th:errors="*{description}" class ="error" ></p>-->
     <!--<label for="opis">Opis</label>-->
     <!--<input th:class="${#fields.hasErrors()}? filedError" id="opis" type="text" th:field="*{description}"/></br></br>-->
 
-    <p th:errors="*{technology}" class ="error" ></p>
     <label for="technologie">Technologie</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="technologie" type="text" th:field="*{technology}"/></br></br>
-    <!--<input th:classappend="${#fields.hasErrors()}? class="jakasKlasa" filedError" id="salary" type="text" th:field="*{salary}"/></br></br>-->
+    <input th:class="${#fields.hasErrors('technology')}? 'filedError'" id="technologie" type="text" th:field="*{technology}"/>
+    <span th:errors="*{technology}" class="error"></span><br><br>
 
-    <p th:errors="*{description}" class ="error" ></p>
-    <label for="opis">Opis</label>
+
+
     <!--polecenia w emet zatwierdzamy tabulatorem-->
-    <textarea th:class="${#fields.hasErrors()}? filedError" name="message" id="opis" cols="30" rows="10" th:field="*{description}"></textarea></br></br>
+    <label for="opis">Opis</label>
+    <textarea th:class="${#fields.hasErrors('description')}? 'filedError'" name="message" id="opis" cols="30" rows="10" th:field="*{description}"></textarea>
+    <span th:errors ="*{description}" class="error"></span><br><br>
 
     <input id="id" type="hidden" th:field="*{id}">
 

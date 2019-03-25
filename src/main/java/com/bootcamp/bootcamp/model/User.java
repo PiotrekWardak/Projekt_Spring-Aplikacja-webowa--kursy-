@@ -19,22 +19,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "<-- Podaj Imie")
+    @NotEmpty(message = "Podaj Imie")
     private String name;
 
-    @NotEmpty(message = "<-- Podaj Nazwisko")
+    @NotEmpty(message = "Podaj Nazwisko")
     private String surname;
 
 
-    @Pattern(regexp="(^$|[0-9]{9})", message = "<-- Numer powinien sie skladac z 9 cyfr")
+    @Pattern(regexp="(^$|[0-9]{9})", message = "Numer powinien sie skladac z 9 cyfr")
     private String phoneNumber;
 
-    @NotEmpty(message = "<-- Podaj email")
+    @NotEmpty(message = "Podaj email")
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotEmpty(message = "<-- Podaj Haslo")
+    @NotEmpty(message = "Podaj Haslo")
     private String password;
 
     @ManyToOne

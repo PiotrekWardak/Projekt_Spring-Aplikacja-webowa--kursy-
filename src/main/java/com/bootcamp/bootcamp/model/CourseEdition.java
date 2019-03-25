@@ -27,16 +27,18 @@ public class CourseEdition {
     @NotNull
     private Course course;
 
+    @NotNull(message = "Podaj date rozpoczecia")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
+    @NotNull(message = "Podaj date zakonczenia")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @Positive
+    @Positive(message = "Podaj kwotę większą od zera")
     private int price;
 
-    @Positive
+    @Positive(message = "Podaj limit miejsc wiekszy od zera")
     private int membersLimit;
 
     @ManyToOne

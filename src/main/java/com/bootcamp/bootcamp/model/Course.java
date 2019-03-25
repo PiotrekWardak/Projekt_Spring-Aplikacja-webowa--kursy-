@@ -20,13 +20,13 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank
+    @NotBlank(message = "Podaj nazwę kursu!")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Podaj opis kursu!")
     private String description;
 
-    @NotBlank
+    @NotBlank(message = "Podaj zakres technologiczny kursu!")
     private String technology;
 
     @OneToMany

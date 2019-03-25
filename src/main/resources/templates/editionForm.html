@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>EditionForm</title>
@@ -15,44 +14,48 @@
 
 <form  th:action="@{/admin/edycje/dodano}" method="post" th:object="${courseEdition}" >
 
-    <p th:errors="*" class ="error" ></p>
 
     <label for="course">Kurs</label>
     <select th:field ="*{course}" id="course">
         <option th:each="element : ${courses}" th:value="${element.id}" th:text="${element.name}" ></option>
     </select>
-    </br>
-    </br>
+    <br>
+    <br>
     <label for="mode">Tryb</label>
     <select th:field ="*{mode}" id="mode">
         <option th:each="element : ${mode}" th:value="${element.id}" th:text="${element.nazwa}" ></option>
     </select>
-    </br>
-    </br>
+    <br>
+    <br>
 
 
-    <p th:errors="*{startDate}" class ="error" ></p>
+
     <label for="dataStartu">Data Startu</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="dataStartu" type="date" th:field="*{startDate}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataStartu" type="date" th:field="*{startDate}"/>
+    <span th:errors="*{startDate}" class ="error" ></span><br><br>
 
-    <p th:errors="*{endDate}" class ="error" ></p>
+
     <label for="dataKonca">Data Konca</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="dataKonca" type="date" th:field="*{endDate}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataKonca" type="date" th:field="*{endDate}"/>
+    <span th:errors="*{endDate}" class ="error" ></span><br><br>
 
 
-    <p th:errors="*{price}" class ="error" ></p>
-    <label for="cena">Ceeeena</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="cena" type="text" th:field="*{price}"/></br></br>
 
-    <p th:errors="*{membersLimit}" class ="error" ></p>
+    <label for="cena">Cena</label>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="cena" type="text" th:field="*{price}"/>
+    <span th:errors="*{price}" class ="error" ></span><br><br>
+
+
     <label for="liczbaUczestnikow">Liczba uczestnikow</label>
-    <input th:class="${#fields.hasErrors()}? filedError" id="liczbaUczestnikow" type="text" th:field="*{membersLimit}"/></br></br>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="liczbaUczestnikow" type="text" th:field="*{membersLimit}"/>
+    <span th:errors="*{membersLimit}" class ="error" ></span><br><br>
 
     <label for="mentor">Mentor</label>
     <select th:field ="*{trainer}" id="mentor">
         <option th:each="element : ${trainer}" th:value="${element.id}" th:text="${element.firstName}+' '+${element.lastName}" ></option>
     </select>
-    </br>
+    <br>
+    <br>
 
     <input id="id" type="hidden" th:field="*{id}">
 
@@ -62,8 +65,12 @@
     <!--<input type="radio" id="activeNo" name="contact" th:value="*{setActive(false)}" th:if="${courseEdition.id} > 0">-->
     <!--<label for="activeNo" th:if="${courseEdition.id} > 0">Rekrutacja zakończona</label>-->
 
-    <input type="radio" th:value="true" th:field="*{active}">aktywny</input>
-    <input type="radio" th:value="false" th:field="*{active}">nieaktywny</input>
+    <label for ="radioTrue">Aktywny</label>
+    <input type="radio" th:value="true" th:field="*{active}" id="radioTrue">
+    <label for ="radioFalse">Nieaktywny</label>
+    <input type="radio" th:value="false" th:field="*{active}" id="radioFalse">
+    <br>
+    <br>
 
     <input type="submit" name="edytuj" value="edytuj"  th:if="${courseEdition.id} > 0" />
     <input type="submit" name="dodaj" value="dodaj"  th:unless="${courseEdition.id} > 0" />

@@ -19,18 +19,18 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Proszę podać swoje imię")
+    @NotEmpty(message = "Proszę podać swoje imię!")
     private String firstName;
 
     @NotEmpty(message = "{com.bootcamp.bootcamp.model.Contact.lastName.NotEmpty}")
     private String lastName;
 
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "Proszę podać e-mail!")
+    @Email(message = "Proszę podać e-mail!")
     @Column(unique = true)
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Pole wymaga ciągu znaków!")
     private String message;
 
     private LocalDateTime date;

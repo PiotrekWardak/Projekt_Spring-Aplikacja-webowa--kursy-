@@ -20,29 +20,29 @@
 
     <label for="imie">Imie</label>
     <input th:class="${#fields.hasErrors('name')}? 'filedError'" id="imie" type="text" th:field="*{name}" placeholder="Podaj Imie"/>
-    <span th:errors="*{name}" class ="error" ></span></br></br>
+    <span th:errors="*{name}" class ="error" ></span><br><br>
 
 
     <label for="lastname">Nazwisko</label>
     <input th:class="${#fields.hasErrors('surname')}? 'filedError'" id="lastname" type="text" th:field="*{surname}" placeholder="Podaj Nazwisko"/>
-    <span th:errors="*{surname}" class ="error" ></span></br></br>
+    <span th:errors="*{surname}" class ="error" ></span><br><br>
 
 
     <label for="email">E-mail</label>
     <input th:class="${#fields.hasErrors('email')}? 'filedError'" th:classappend ="${exist}?'filedError'" id="email" type="email" th:field="*{email}" placeholder="Podaj swoj E-mail"/>
     <span th:errors="*{email}" class ="error" ></span>
-    <span th:if="${exist}" style="color: red">Użytkownik o podanym E-mailu już istnieje!</span></br></br>
+    <span th:if="${exist}" style="color: red">Użytkownik o podanym E-mailu już istnieje!</span><br><br>
 
 
     <label for="phone">Telefon kontaktowy</label>
-    <input th:class="${#fields.hasErrors('phoneNumber')}? 'filedError'" id="phone" type="text" th:field="*{phoneNumber}" placeholder="Podaj numer kontaktowy"/>
+    <input th:class="${#fields.hasErrors('phoneNumber')}? 'filedError'" id="phone" type="text" th:field="*{phoneNumber}" placeholder="Nr. kontakt. (opcjonalny)"/>
     <span th:errors="*{phoneNumber}" class ="error" ></span>
-    </br></br>
+    <br><br>
 
 
     <label for="password">Hasło</label>
     <input th:class="${#fields.hasErrors('password')}? 'filedError'" id="password" type="text" th:field="*{password}" placeholder="Podaj Haslo"/>
-    <span th:errors="*{password}" class ="error" ></span></br></br>
+    <span th:errors="*{password}" class ="error" ></span><br><br>
 
 
     <input id="id" type="hidden" th:field="*{id}">
