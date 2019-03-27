@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
-import java.time.LocalDate;
 
 @Entity
 @Data
@@ -28,12 +27,14 @@ public class CourseEdition {
     private Course course;
 
     @NotNull(message = "Podaj date rozpoczecia")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Pattern(regexp = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$", message = "Data musi byc w formacie yyyy-mm-dd")
+    private String startDate;
 
     @NotNull(message = "Podaj date zakonczenia")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endDate;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Pattern(regexp = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$", message = "Data musi byc w formacie yyyy-mm-dd")
+    private String endDate;
 
     @Positive(message = "Podaj kwotę większą od zera")
     private int price;

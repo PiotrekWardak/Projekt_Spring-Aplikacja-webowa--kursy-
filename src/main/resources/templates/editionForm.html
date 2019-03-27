@@ -4,10 +4,51 @@
     <meta charset="UTF-8">
     <title>EditionForm</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            var dateFormat = "yy-mm-dd",
+                from = $( "#dataStartu" )
+                    .datepicker({
+                        minDate: 0,
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        dateFormat: "yy-mm-dd"
+                    })
+                    .on( "change", function() {
+                        to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                to = $( "#dataKonca" ).datepicker({
+                    minDate: 0,
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    dateFormat: "yy-mm-dd"
+                })
+                    .on( "change", function() {
+                        from.datepicker( "option", "maxDate", getDate( this ) );
+                    });
+
+            function getDate( element ) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                } catch( error ) {
+                    date = null;
+                }
+
+                return date;
+            }
+        } );
+    </script>
+
+
 </head>
 <body>
 <header th:replace="fragments/header :: menu"></header>
-
 
 
 <h1>Dodawanie Edycji Kursu</h1>
@@ -31,12 +72,12 @@
 
 
     <label for="dataStartu">Data Startu</label>
-    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataStartu" type="date" th:field="*{startDate}"/>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataStartu"  th:field="*{startDate}"/>
     <span th:errors="*{startDate}" class ="error" ></span><br><br>
 
 
     <label for="dataKonca">Data Konca</label>
-    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataKonca" type="date" th:field="*{endDate}"/>
+    <input th:class="${#fields.hasErrors()}? 'filedError'" id="dataKonca"  th:field="*{endDate}"/>
     <span th:errors="*{endDate}" class ="error" ></span><br><br>
 
 
