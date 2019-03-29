@@ -9,6 +9,8 @@
 
 <body>
 <header th:replace="fragments/header :: menu"></header>
+
+<div class="content">
 <p th:if="${editionList}">Twoje Kursy</p>
 
 
@@ -37,7 +39,7 @@
     </tr>
 </table>
 
-
+</div>
 
 
 <footer th:replace="fragments/footer :: stopka"></footer>

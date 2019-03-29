@@ -9,7 +9,7 @@
 <header th:replace="fragments/header :: menu"></header>
 
 
-
+<div class="content">
 <h1>Dodawanie Kursu</h1>
 
 <form th:action="@{/admin/kursy/dodano}" method="post" th:object="${course}" >
@@ -43,7 +43,7 @@
     <input type="reset" value="resetuj" />
 
 </form>
-
+</div>
 
 <footer th:replace="fragments/footer :: stopka"></footer>
 

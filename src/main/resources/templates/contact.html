@@ -7,7 +7,7 @@
 </head>
 <body>
 <header th:replace="fragments/header :: menu"></header>
-
+<div class="content">
 <h1>Formularz kontaktowy</h1>
 <span th:if="${isSent}">Wiadomosc została wysłana, dziękujemy!</span>
 <form th:action="@{/wyslij}" method="post" th:object="${contact}">
@@ -34,7 +34,7 @@
 
 </form>
 
-
+</div>
 <footer th:replace="fragments/footer :: stopka"></footer>
 
 </body>

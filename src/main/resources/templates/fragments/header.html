@@ -1,24 +1,79 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 <body>
-    <nav th:fragment="menu">
-        <ul>
+<div class="wrapper" th:fragment="menu">
+
+    <!--<div class="header">-->
+    <!--&lt;!&ndash;<div class="logo">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;&lt;!&ndash;<img style="width:100%" src="pictures/spring_menu.jpeg"  alt="brak">&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+    <nav class="nav">
+        <ol>
             <li><a href="/">Strona główna</a></li>
             <li><a href="/o-nas">O Nas</a></li>
             <li><a href="/kursy">Edycje Kursów</a></li>
             <li><a href="/trenerzy">Trenerzy</a></li>
             <li><a href="/kontakt">Kontakt</a></li>
-            <li   sec:authorize="!isAuthenticated()"><a href="/logowanie">Logowanie</a></li>
-            <li   sec:authorize="!isAuthenticated()"><a href="/add">Załóż konto użytkownika</a> </li>
-            <li   sec:authorize=" hasAuthority('user')"><a href="/user/panel">Panel Kursanta</a> </li>
-            <li   sec:authorize="hasAuthority('trainer')"><a href="/trainer/panel">Panel Trenera</a> </li>
-            <li   sec:authorize="hasAuthority('admin')"><a href="/admin/panel">Panel Admina</a> </li>
-            <li   sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a> </li>
-        </ul>
-    </nav>
+            <li sec:authorize="!isAuthenticated()"><a href="/logowanie">Logowanie</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/add">Załóż konto</a></li>
+            <li sec:authorize=" hasAuthority('user')"><a href="#">Panel Kursanta</a>
+                <ul>
+                    <li><a href="/user/panel/enrolments">Twoje kursy</a></li>
+                </ul>
 
+            </li>
+            <li sec:authorize="hasAuthority('trainer')"><a href="#">Panel Trenera</a>
+                <ul>
+                    <li><a th:href="@{/trainer/panel/enrolments}">Twoje kursy</a></li>
+                </ul>
+
+            </li>
+            <li sec:authorize="hasAuthority('admin')"><a href="#">Panel Admina</a>
+
+                <ul>
+                    <li><a th:href="@{/admin/panel/UserAdd}">Dodaj Użytkownika</a></li>
+                    <li><a th:href="@{/admin/panel/TrainerAdd}">Dodaj Trenera</a></li>
+                    <li><a href="/admin/trenerzy">Zarządzanie listą trenerów</a></li>
+                    <li><a href="/admin/kursy">Zarządzanie dostępnymi kursami</a></li>
+                    <li><a href="/admin/edycje">Zarządzanie edycjami kursów</a> </li>
+                </ul>
+            </li>
+
+            <li sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a></li>
+        </ol>
+
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            var NavY = $('.nav').offset().top;
+
+            var stickyNav = function () {
+                var ScrollY = $(window).scrollTop();
+
+                if (ScrollY > NavY) {
+                    $('.nav').addClass('sticky');
+                } else {
+                    $('.nav').removeClass('sticky');
+                }
+            };
+
+            stickyNav();
+
+            $(window).scroll(function () {
+                stickyNav();
+            });
+        });
+
+    </script>
+</div>
 
 </body>
 </html>

@@ -23,6 +23,8 @@
 </script>
 <header th:replace="fragments/header :: menu"></header>
 
+<div class="content">
+
 <p th:if="${present}">Obecnie jestes juz zapisany na wybrany kurs</p>
 <p th:if="${isSavedNew}">Zostales zapisany na wybrany kurs. Powodzenia!</p>
 <table id="tabelaFormat" border="solid">
@@ -61,6 +63,7 @@
     </tr>
 </table>
 
+</div>
 <footer th:replace="fragments/footer :: stopka"></footer>
 
 </body>
