@@ -8,32 +8,34 @@
 <body>
 <header th:replace="fragments/header :: menu"></header>
 <div class="content">
+
+    <div id='container'>
 <h1>Formularz kontaktowy</h1>
 <span th:if="${isSent}">Wiadomosc została wysłana, dziękujemy!</span>
 <form th:action="@{/wyslij}" method="post" th:object="${contact}">
 
     <label for="firstName">Imie</label>
     <input th:class="${#fields.hasErrors('firstName')}? 'filedError'" id="firstName" type="text" th:field="*{firstName}" placeholder="Podaj Imie"/>
-    <span th:errors="*{firstName}"  class="error"></span><br><br>
+    <!--<span th:errors="*{firstName}"  class="error"></span>-->
 
 
     <label for="lastname">Nazwisko</label>
     <input th:class="${#fields.hasErrors('lastName')}? 'filedError'" id="lastname" type="text" th:field="*{lastName}" placeholder="Podaj Nazwisko"/>
-    <span th:errors="*{lastName}"  class="error"></span><br><br>
+    <!--<span th:errors="*{lastName}"  class="error"></span>-->
 
     <label for="email">E-mail</label>
     <input th:class="${#fields.hasErrors('email')}? 'filedError'" id="email" type="email" th:field="*{email}" placeholder="Podaj E-mail" />
-    <span th:errors="*{email}"  class="error"></span><br><br>
+    <!--<span th:errors="*{email}"  class="error"></span>-->
 
     <label for="message">Wiadomość</label>
-    <input th:class="${#fields.hasErrors('message')}? 'filedError'" id="message"  th:field="*{message}" placeholder="Miejsce na wiadomość"/>
-    <span th:errors="*{message}"  class="error"></span><br><br>
+    <input th:class="${#fields.hasErrors('message')}? 'filedError'" id="message" type="text"  th:field="*{message}" placeholder="Miejsce na wiadomość"/>
+    <!--<span th:errors="*{message}"  class="error"></span>-->
 
     <input type="submit" value="wyslij" />
     <input type="reset" value="resetuj" />
 
 </form>
-
+    </div>
 </div>
 <footer th:replace="fragments/footer :: stopka"></footer>
 

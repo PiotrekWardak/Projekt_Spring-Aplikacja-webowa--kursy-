@@ -43,8 +43,75 @@ body{
     margin-right: auto;
     text-align: justify;
     padding-top: 10px;
+
 }
 
+#container
+{
+background-color: white;
+    color: black;
+    width: 300px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    -webkit-box-shadow: -2px -2px 6px 5px rgba(221,221,221,0.48);
+    -moz-box-shadow: -2px -2px 6px 5px rgba(221,221,221,0.48);
+    box-shadow: -2px -2px 6px 5px rgba(221,221,221,0.48);
+}
+#container h1{
+    text-align: center;
+}
+
+input[type=text],
+input[type=password],
+input[type=email]
+{
+    width: 300px;
+    background-color: #efefef;
+    color: #666;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 10px;
+
+}
+
+input[type=submit],
+input[type=reset]
+{
+    width: 300px;
+    background-color: grey;
+    font-size: 20px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus
+{
+    -webkit-box-shadow: -0px 0px 6px 5px rgba(221,221,221,0.48);
+    -moz-box-shadow: 0px 0px 6px 5px rgba(221,221,221,0.48);
+    box-shadow: 0px 0px 6px 5px rgba(221,221,221,0.48);
+    border: 2px solid #a5cdb4;
+    background-color: #a5cdb4;
+}
+input[type=submit]:hover,
+input[type=reset]:hover
+{
+    background-color: #3E5260;
+
+}
 .socials
 {
     width: 100%;
@@ -171,7 +238,7 @@ a
     margin-left:auto;
     margin-right:auto;
     border-collapse: collapse;
-    border: 1px solid #824100;
+    /*border: 1px solid #824100;*/
 
 }
 #tabelaFormat a{
@@ -189,13 +256,13 @@ a
     color: #3E5260;
 }
 #tabelaFormat th{
-    border: 1px dotted #FFA346;
-    /*color: #3E5260;*/
+    border: 1px dashed #000;
+
     padding:12px;
 }
 #tabelaFormat td{
     border: 1px dashed #000;
-    /*color: red;*/
+
     padding:12px;
     width:90px;
 }
@@ -204,7 +271,7 @@ a
     color: red;
 }
 
-.filedError{
+input.filedError{
 
     border-style: solid;
     border-color: red;

@@ -10,53 +10,58 @@
 
 <div class="content">
 
-    <h1>Dodawanie trenera</h1>
+    <div id='container'>
+        <h1>Dodawanie trenera</h1>
 
-    <form th:action="@{/admin/dodano}" method="post" th:object="${trainer}">
-
-
-        <label for="firstName">Imie</label>
-        <input th:class="${#fields.hasErrors()}? 'filedError'" id="firstName" type="text" th:field="*{firstName}"
-               placeholder="Imie"/>
-        <span th:errors="*{firstName}" class="error"></span> <br><br>
+        <form th:action="@{/admin/dodano}" method="post" th:object="${trainer}">
 
 
-        <label for="lastname">Nazwisko</label>
-        <input th:class="${#fields.hasErrors()}? 'filedError'" id="lastname" type="text" th:field="*{lastName}"
-               placeholder="Nazwisko"/>
-        <span th:errors="*{lastName}" class="error"></span><br><br>
+            <label for="firstName">Imie</label>
+            <input th:class="${#fields.hasErrors('firstName')}? 'filedError'" id="firstName" type="text"
+                   th:field="*{firstName}"
+                   placeholder="Imie"/>
+            <!--<span th:errors="*{firstName}" class="error"></span> <br><br>-->
 
 
-        <label for="salary">Pensja</label>
-        <input th:class="${#fields.hasErrors()}? 'filedError'" id="salary" type="text" th:field="*{salary}"
-               placeholder="Wynagrodzenie"/>
-        <span th:errors="*{salary}" class="error"></span><br><br>
-        <!--<input th:classappend="${#fields.hasErrors()}? class="jakasKlasa" filedError" id="salary" type="text" th:field="*{salary}"/></br></br>-->
+            <label for="lastname">Nazwisko</label>
+            <input th:class="${#fields.hasErrors('lastName')}? 'filedError'" id="lastname" type="text"
+                   th:field="*{lastName}"
+                   placeholder="Nazwisko"/>
+            <!--<span th:errors="*{lastName}" class="error"></span><br><br>-->
 
 
-        <label for="message">Opis</label>
-        <!--polecenia w emet zatwierdzamy tabulatorem-->
-        <textarea th:class="${#fields.hasErrors()}? 'filedError'" name="message" id="message" cols="30" rows="10"
-                  th:field="*{description}" placeholder="Opis"></textarea>
-        <span th:errors="*{description}" class="error"></span><br><br>
+            <label for="salary">Pensja</label>
+            <input th:class="${#fields.hasErrors('salary')}? 'filedError'" id="salary" type="text" th:field="*{salary}"
+                   placeholder="Wynagrodzenie"/>
+            <!--<span th:errors="*{salary}" class="error"></span><br><br>-->
+            <!--<input th:classappend="${#fields.hasErrors()}? class="jakasKlasa" filedError" id="salary" type="text" th:field="*{salary}"/></br></br>-->
 
-        <label for="email">E-mail</label>
-        <input th:class="${#fields.hasErrors('email')}? 'filedError'" id="email" type="email" th:field="*{email}"
-               placeholder="Podaj swoj E-mail"/>
-        <span th:errors="*{email}" class="error"></span><br><br>
 
-        <label for="password">Hasło</label>
-        <input th:unless="${trainer.id} < 0" th:class="${#fields.hasErrors('password')}? 'filedError'" id="password"
-               type="text" th:field="*{password}" placeholder="Podaj Haslo"/>
-        <span th:errors="*{password}" class="error"></span><br><br>
+            <label for="message">Opis</label>
+            <!--polecenia w emet zatwierdzamy tabulatorem-->
+            <textarea th:class="${#fields.hasErrors('description')}? 'filedError'" name="message" id="message" cols="30"
+                      rows="10"
+                      th:field="*{description}" placeholder="Opis"></textarea>
+            <!--<span th:errors="*{description}" class="error"></span><br><br>-->
 
-        <input id="id" type="hidden" th:field="*{id}">
+            <label for="email">E-mail</label>
+            <input th:class="${#fields.hasErrors('email')}? 'filedError'" id="email" type="email" th:field="*{email}"
+                   placeholder="Podaj swoj E-mail"/>
+            <!--<span th:errors="*{email}" class="error"></span><br><br>-->
 
-        <input type="submit" name="edytuj" value="edytuj" th:if="${trainer.id} > 0"/>
-        <input type="submit" name="dodaj" value="dodaj" th:unless="${trainer.id} > 0"/>
-        <input type="reset" value="resetuj"/>
+            <label for="password">Hasło</label>
+            <input th:unless="${trainer.id} < 0" th:class="${#fields.hasErrors('password')}? 'filedError'" id="password"
+                   type="text" th:field="*{password}" placeholder="Podaj Haslo"/>
+            <!--<span th:errors="*{password}" class="error"></span><br><br>-->
 
-    </form>
+            <input id="id" type="hidden" th:field="*{id}">
+
+            <input type="submit" name="edytuj" value="edytuj" th:if="${trainer.id} > 0"/>
+            <input type="submit" name="dodaj" value="dodaj" th:unless="${trainer.id} > 0"/>
+            <input type="reset" value="resetuj"/>
+
+        </form>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer :: stopka"></footer>

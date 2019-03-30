@@ -10,6 +10,7 @@
 
 
 <div class="content">
+    <div id='container'>
 <h1>Dodawanie Kursu</h1>
 
 <form th:action="@{/admin/kursy/dodano}" method="post" th:object="${course}" >
@@ -18,23 +19,23 @@
 
 
     <label for="nazwa">Nazwa</label>
-    <input th:class="${#fields.hasErrors('name')}? 'filedError'" id="nazwa" type="text" th:field="*{name}  "/>
-    <span th:errors="*{name}" class ="error" ></span><br><br>
+    <input th:class="${#fields.hasErrors('name')}? 'filedError'" id="nazwa" type="text" th:field="*{name}  " placeholder="Podaj nazwę"/>
+    <!--<span th:errors="*{name}" class ="error" ></span><br><br>-->
 
     <!--<p th:errors="*{description}" class ="error" ></p>-->
     <!--<label for="opis">Opis</label>-->
     <!--<input th:class="${#fields.hasErrors()}? filedError" id="opis" type="text" th:field="*{description}"/></br></br>-->
 
     <label for="technologie">Technologie</label>
-    <input th:class="${#fields.hasErrors('technology')}? 'filedError'" id="technologie" type="text" th:field="*{technology}"/>
-    <span th:errors="*{technology}" class="error"></span><br><br>
+    <input th:class="${#fields.hasErrors('technology')}? 'filedError'" id="technologie" type="text" th:field="*{technology}" placeholder="Podaj występujące technologie"/>
+    <!--<span th:errors="*{technology}" class="error"></span><br><br>-->
 
 
 
     <!--polecenia w emet zatwierdzamy tabulatorem-->
     <label for="opis">Opis</label>
-    <textarea th:class="${#fields.hasErrors('description')}? 'filedError'" name="message" id="opis" cols="30" rows="10" th:field="*{description}"></textarea>
-    <span th:errors ="*{description}" class="error"></span><br><br>
+    <textarea th:class="${#fields.hasErrors('description')}? 'filedError'" name="message" id="opis" cols="30" rows="10" th:field="*{description}" ></textarea>
+    <!--<span th:errors ="*{description}" class="error"></span><br><br>-->
 
     <input id="id" type="hidden" th:field="*{id}">
 
@@ -43,6 +44,7 @@
     <input type="reset" value="resetuj" />
 
 </form>
+    </div>
 </div>
 
 <footer th:replace="fragments/footer :: stopka"></footer>
