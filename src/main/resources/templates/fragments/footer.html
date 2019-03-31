@@ -7,8 +7,8 @@
     <footer th:fragment="stopka">
         <div class="socials">
             <div class="socialdivs"></div>
-            <div class="fb"><a href="http://www.facebook.com"><img sec:authorize="isAnonymous() || hasAuthority('user') || hasAuthority('trainer') || hasAuthority('admin')" src="../pictures/facebook.jpeg"  alt="brak"></a></div>
-            <div class="al" ><a href="http://www.allegro.pl"><img  src="../pictures/allegro.jpeg"  alt="brak"></a></div>
+            <div class="fb"><a href="http://www.facebook.com"><img sec:authorize="isAnonymous() || hasAuthority('user') || hasAuthority('trainer') || hasAuthority('admin')" th:src="@{/pictures/facebook.jpg}"  alt="brak"></a></div>
+            <div class="al" ><a href="http://www.allegro.pl"><img  th:src="@{/pictures/allegro.jpg}"  alt="brak"></a></div>
 
             <div style="clear: both"></div>
 

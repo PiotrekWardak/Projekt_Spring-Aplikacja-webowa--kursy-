@@ -36,14 +36,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 //        http
 //                .authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .anyRequest().authenticated() // jesli nie ma czegos bardziej szczegolowego np antMatchers to wywoalo anyRequest
+//                .antMatchers("/").permitAll();
+////                .anyRequest().authenticated() // jesli nie ma czegos bardziej szczegolowego np antMatchers to wywoalo anyRequest
 //                .and()
 //                .logout().logoutUrl("/logout")
 //                .logoutSuccessUrl("/")
 //                .and()
 //                .formLogin();
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin","/admin/**").hasAuthority("admin")//.authenticated()
@@ -58,8 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/logowanie")
                     .defaultSuccessUrl("/");
-//          .usernameParameter("username")
-//                .passwordParameter("password")//jakbysmy dali w formularzu inne nazwy niz domyslne to tutaj wpisujemy te zmienione nazwy pol
+////          .usernameParameter("username")
+////                .passwordParameter("password")//jakbysmy dali w formularzu inne nazwy niz domyslne to tutaj wpisujemy te zmienione nazwy pol
     }
 }
 
