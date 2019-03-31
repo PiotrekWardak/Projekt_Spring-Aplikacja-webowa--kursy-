@@ -126,25 +126,29 @@ input[type=reset]:hover
     margin-right: auto;
 }
 
-.fb
+.fb img
 {
-    width: 250px;
-    height: 155px;
+    width: 155px;
+    height: 145px;
+    float: left;
+
+
+}
+
+.fb img:hover{
+    opacity: 0.5;
+}
+.al img
+{
+    width: 155px;
+    height: 145px;
     float: left;
 }
-.fb:hover {
 
-    background-color: #4668b3;
-}
-.yt
-{
-    width: 250px;
-    height: 155px;
-    float: left;
-}
-.yt:hover {
 
-    background-color: #d94348;
+.al img:hover{
+
+    opacity: 0.5;
 }
 
 .footer
