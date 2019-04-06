@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .formLogin();
         http
-                .csrf().disable()
+//                .csrf().disable() // to sluzyło do tego zeby POST restowy zadziałał i został wysłany jason
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin","/admin/**").hasAuthority("admin")//.authenticated()

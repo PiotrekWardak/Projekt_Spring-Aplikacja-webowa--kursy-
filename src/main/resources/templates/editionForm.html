@@ -12,7 +12,7 @@
     <script>
         $(function () {
             var dateFormat = "yy-mm-dd",
-                from = $("#dataStartu")
+                from = $('#dataStartu')
                     .datepicker({
                         minDate: 0,
                         changeMonth: true,
@@ -22,7 +22,7 @@
                     .on("change", function () {
                         to.datepicker("option", "minDate", getDate(this));
                     }),
-                to = $("#dataKonca").datepicker({
+                to = $('#dataKonca').datepicker({
                     minDate: 0,
                     changeMonth: true,
                     numberOfMonths: 1,
