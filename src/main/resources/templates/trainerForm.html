@@ -15,7 +15,6 @@
 
         <form th:action="@{/admin/dodano}" method="post" th:object="${trainer}">
 
-
             <label for="firstName">Imie</label>
             <input th:class="${#fields.hasErrors('firstName')}? 'filedError'" id="firstName" type="text"
                    th:field="*{firstName}"
